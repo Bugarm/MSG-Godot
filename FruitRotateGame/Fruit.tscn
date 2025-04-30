@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmiw22abub3w4"]
+
+[ext_resource type="Script" path="res://FruitScript.gd" id="1_vagdg"]
+[ext_resource type="Texture2D" uid="uid://bgg35vhxgar4x" path="res://FruitImg/Fruit1.png" id="2_y18oq"]
+
+[node name="Fruit" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(43.67, 43.365)
+texture = ExtResource("2_y18oq")
+script = ExtResource("1_vagdg")
