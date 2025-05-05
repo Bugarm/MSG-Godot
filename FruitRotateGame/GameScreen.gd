@@ -62,14 +62,14 @@ func _on_fruit_selected(fruit: TextureRect) -> void:
 	
 	var rand = randi_range(0,11)
 	# Handle fruit selection.
-	if(rand < 8):
+	if(rand > 2):
 		var newPos = fruit.rotation_degrees + 90
 		fruit.disabled = true
 	
 		while(fruit.rotation_degrees < newPos):
 			fruit.rotation_degrees += 5
 			await get_tree().create_timer(0.01).timeout
-			print(fruit.rotation_degrees)
+			#print(fruit.rotation_degrees)
 		
 		if(fruit.rotation_degrees >= 360):
 			fruit.rotation_degrees = 0	
@@ -114,5 +114,5 @@ func _on_timer_timeout() -> void:
 func _on_game_victory() -> void:
 	game_over = true
 	game_timer.stop()
-	notifier.text = "Congratulations!"
+	notifier.text = "You Win!"
 

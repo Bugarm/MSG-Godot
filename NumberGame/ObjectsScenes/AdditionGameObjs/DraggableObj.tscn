@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw6ppkokquaya"]
+
+[ext_resource type="Script" path="res://ObjectsScenes/AdditionGameObjs/DraggableObj.gd" id="1_n7vpc"]
+[ext_resource type="Texture2D" uid="uid://ched5qq8b2p2d" path="res://slotIcon.png" id="2_7c81d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgicy"]
+
+[node name="DraggableObj" type="Control" node_paths=PackedStringArray("answerText") groups=["DragObj"]]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_n7vpc")
+answerText = NodePath("Label")
+
+[node name="Sprite2D" type="TextureRect" parent="." groups=["DragObj"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7c81d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -66.0
+offset_right = 27.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 96
+text = "0"
+
+[node name="Area2D" type="Area2D" parent="." groups=["DragObj"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["DragObj"]]
+scale = Vector2(6.355, 6.355)
+shape = SubResource("RectangleShape2D_rgicy")
+
+[connection signal="gui_input" from="Sprite2D" to="." method="_on_sprite_2d_gui_input"]
+[connection signal="mouse_entered" from="Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D" to="." method="_on_sprite_2d_mouse_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

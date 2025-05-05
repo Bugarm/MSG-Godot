@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3eetl26t2ebw"]
+
+[ext_resource type="Script" path="res://ObjectsScenes/MainMenuScript.gd" id="1_gif75"]
+[ext_resource type="PackedScene" uid="uid://cyh3o414eej4r" path="res://ObjectsScenes/AdditionGameObjs/ButtonAdd.tscn" id="2_ch17e"]
+[ext_resource type="PackedScene" uid="uid://cp7s0mug7ustl" path="res://ObjectsScenes/SearchButton.tscn" id="3_4hpbi"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("additionButton", "NumSearchButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gif75")
+additionButton = NodePath("MarginContainer/GridContainer/AddButton")
+NumSearchButton = NodePath("MarginContainer/GridContainer/NumSButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 457.0
+offset_right = 835.0
+offset_bottom = 535.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="AddButton" parent="MarginContainer/GridContainer" instance=ExtResource("2_ch17e")]
+layout_mode = 2
+
+[node name="NumSButton" parent="MarginContainer/GridContainer" instance=ExtResource("3_4hpbi")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." groups=["is_dragging"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 286.0
+offset_right = 697.0
+offset_bottom = 356.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 51
+text = "E-Learning Maths Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="gui_input" from="MarginContainer/GridContainer/NumSButton" to="." method="_on_num_s_button_gui_input"]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://bug81dadeio8h"]
+
+[ext_resource type="Script" path="res://ObjectsScenes/SearchGame/NumberGenerator.gd" id="1_3dn2r"]
+[ext_resource type="AudioStream" uid="uid://j2sq4pn8n63x" path="res://GameScenes/AudioClips/clip0.wav" id="2_bymtx"]
+[ext_resource type="AudioStream" uid="uid://canhi53rxlok3" path="res://GameScenes/AudioClips/clip1.wav" id="2_x23od"]
+[ext_resource type="AudioStream" uid="uid://dkig6jpqva0on" path="res://GameScenes/AudioClips/clip2.wav" id="3_cvdb5"]
+[ext_resource type="AudioStream" uid="uid://dplpimcunpoc1" path="res://GameScenes/AudioClips/clip3.wav" id="4_xbu7k"]
+[ext_resource type="AudioStream" uid="uid://b45kqp6sjssmv" path="res://GameScenes/AudioClips/clip4.wav" id="5_oarsa"]
+[ext_resource type="AudioStream" uid="uid://c6mrm38dx2rp7" path="res://GameScenes/AudioClips/clip5.wav" id="6_3v65v"]
+[ext_resource type="AudioStream" uid="uid://jkerxpp617r" path="res://GameScenes/AudioClips/clip6.wav" id="7_d0qot"]
+[ext_resource type="AudioStream" uid="uid://dk4605utm65k3" path="res://GameScenes/AudioClips/clip7.wav" id="8_3from"]
+[ext_resource type="AudioStream" uid="uid://3pg1wfhcire2" path="res://GameScenes/AudioClips/clip8.wav" id="9_s7kq7"]
+[ext_resource type="AudioStream" uid="uid://cpshokw785wit" path="res://GameScenes/AudioClips/clip9.wav" id="10_7vj1k"]
+[ext_resource type="AudioStream" uid="uid://cq10xpx00bewi" path="res://GameScenes/AudioClips/clip10.wav" id="11_8s7hv"]
+
+[node name="NumSearchGame" type="Control" node_paths=PackedStringArray("label", "roundLabel", "grid_container", "audioStream")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3dn2r")
+label = NodePath("Label")
+roundLabel = NodePath("roundLabel")
+grid_container = NodePath("CenterContainer/GridContainer")
+audioStream = NodePath("AudioStreamPlayer2D")
+MusicTracks = Array[AudioStream]([ExtResource("2_bymtx"), ExtResource("2_x23od"), ExtResource("3_cvdb5"), ExtResource("4_xbu7k"), ExtResource("5_oarsa"), ExtResource("6_3v65v"), ExtResource("7_d0qot"), ExtResource("8_3from"), ExtResource("9_s7kq7"), ExtResource("10_7vj1k"), ExtResource("11_8s7hv")])
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 718.0
+offset_bottom = 848.0
+color = Color(0.733333, 1, 1, 1)
+
+[node name="Line" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 233.0
+offset_right = 718.0
+offset_bottom = 238.0
+color = Color(0, 0, 0, 1)
+
+[node name="roundLabel" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 159.0
+offset_right = 169.0
+offset_bottom = 264.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 31
+text = "Round: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 71.0
+offset_right = 674.0
+offset_bottom = 176.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 76
+text = "Searching Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = 84.0
+offset_right = 549.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.61, 0.61)
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 756.0
+offset_right = 514.0
+offset_bottom = 828.0
+theme_override_font_sizes/font_size = 46
+text = "Replay Audio"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

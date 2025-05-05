@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgsqpey1qkcik"]
+
+[ext_resource type="PackedScene" uid="uid://bkgsryx8gjomh" path="res://ObjectsScenes/DroppableArea.tscn" id="1_3nu4w"]
+[ext_resource type="PackedScene" uid="uid://bw6ppkokquaya" path="res://ObjectsScenes/DraggableObj.tscn" id="1_4fhos"]
+[ext_resource type="Script" path="res://GameScenes/AdditionGame.gd" id="1_hbsuk"]
+
+[node name="AdditionGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbsuk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 79.0
+offset_right = 686.0
+offset_bottom = 149.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 51
+text = "Addition Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Droppable2" parent="." instance=ExtResource("1_3nu4w")]
+position = Vector2(459, 716)
+
+[node name="Droppable" parent="." instance=ExtResource("1_3nu4w")]
+position = Vector2(440, 241)
+
+[node name="DraggableObj" parent="." instance=ExtResource("1_4fhos")]
+offset_left = 180.0
+offset_top = 305.0
+offset_right = 180.0
+offset_bottom = 305.0
+
+[node name="DraggableObj2" parent="." instance=ExtResource("1_4fhos")]
+offset_left = 184.0
+offset_top = 733.0
+offset_right = 184.0
+offset_bottom = 733.0
+
+[node name="Droppable3" parent="." instance=ExtResource("1_3nu4w")]
+position = Vector2(172, 514)
+isAnswerSlot = true
+
+[node name="DraggableObj3" parent="." instance=ExtResource("1_4fhos")]
+offset_left = 463.0
+offset_top = 510.0
+offset_right = 463.0
+offset_bottom = 510.0

@@ -18,7 +18,7 @@ signal fruit_ready(fruit)
 # Called when the node is ready
 func _ready():
 
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().process_frame
 	fruit_ready.emit(self)
 	pass
 

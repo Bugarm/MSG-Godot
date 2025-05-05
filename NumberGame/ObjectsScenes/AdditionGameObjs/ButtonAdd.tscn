@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyh3o414eej4r"]
+
+[ext_resource type="Script" path="res://ObjectsScenes/AdditionGameObjs/AddButton.gd" id="1_6wh7v"]
+
+[node name="AddButton" type="Button"]
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 41
+text = "Addition Game"
+script = ExtResource("1_6wh7v")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

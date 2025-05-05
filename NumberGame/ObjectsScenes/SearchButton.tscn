@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp7s0mug7ustl"]
+
+[ext_resource type="Script" path="res://ObjectsScenes/SearchButton.gd" id="1_3m05f"]
+
+[node name="NumSButton" type="Button"]
+theme_override_font_sizes/font_size = 41
+text = "Number Search"
+script = ExtResource("1_3m05f")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

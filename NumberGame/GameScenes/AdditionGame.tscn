@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgsqpey1qkcik"]
+
+[ext_resource type="PackedScene" uid="uid://bkgsryx8gjomh" path="res://ObjectsScenes/AdditionGameObjs/DroppableArea.tscn" id="1_3nu4w"]
+[ext_resource type="PackedScene" uid="uid://bw6ppkokquaya" path="res://ObjectsScenes/AdditionGameObjs/DraggableObj.tscn" id="1_4fhos"]
+[ext_resource type="Script" path="res://GameScenes/AdditionGame.gd" id="1_hbsuk"]
+[ext_resource type="Texture2D" uid="uid://cb00prefgpod" path="res://whiteboard.jpg" id="2_xko3c"]
+
+[node name="AdditionGame" type="Control" node_paths=PackedStringArray("slot1Obj", "slot2Obj", "title")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbsuk")
+slot1Obj = NodePath("GridContainer/slot1")
+slot2Obj = NodePath("GridContainer/slot2")
+title = NodePath("Title")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 716.0
+offset_bottom = 846.0
+color = Color(0.75, 0.48, 0.345, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 259.0
+offset_right = 872.0
+offset_bottom = 819.0
+scale = Vector2(0.81, 0.81)
+texture = ExtResource("2_xko3c")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 79.0
+offset_right = 686.0
+offset_bottom = 149.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 81
+text = "Addition Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 464.0
+offset_right = 390.0
+offset_bottom = 534.0
+theme_override_constants/h_separation = 25
+columns = 4
+
+[node name="slot1" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 51
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="+" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 51
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="slot2" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 51
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="=" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 51
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnswerSlot" parent="." instance=ExtResource("1_3nu4w")]
+position = Vector2(383, 498)
+isAnswerSlot = true
+
+[node name="DraggableObj" parent="." instance=ExtResource("1_4fhos")]
+offset_left = 610.0
+offset_top = 368.0
+offset_right = 610.0
+offset_bottom = 368.0
+
+[node name="DraggableObj2" parent="." instance=ExtResource("1_4fhos")]
+offset_left = 610.0
+offset_top = 601.0
+offset_right = 610.0
+offset_bottom = 601.0
+
+[node name="DraggableObj3" parent="." instance=ExtResource("1_4fhos")]
+offset_left = 610.0
+offset_top = 485.0
+offset_right = 610.0
+offset_bottom = 485.0
