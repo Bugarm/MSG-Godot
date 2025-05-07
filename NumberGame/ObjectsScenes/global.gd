@@ -12,6 +12,7 @@ var nextObj = 0
 var answerChoices: Array = []
 
 var hasAnsCorrected = false
+var showAnswer = false
 
 #//
 var searchingAns = 0

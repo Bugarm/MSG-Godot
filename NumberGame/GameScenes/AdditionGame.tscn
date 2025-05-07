@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://GameScenes/AdditionGame.gd" id="1_hbsuk"]
 [ext_resource type="Texture2D" uid="uid://cb00prefgpod" path="res://whiteboard.jpg" id="2_xko3c"]
 
-[node name="AdditionGame" type="Control" node_paths=PackedStringArray("slot1Obj", "slot2Obj", "title")]
+[node name="AdditionGame" type="Control" node_paths=PackedStringArray("slot1Obj", "slot2Obj", "title", "roundsLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,7 @@ script = ExtResource("1_hbsuk")
 slot1Obj = NodePath("GridContainer/slot1")
 slot2Obj = NodePath("GridContainer/slot2")
 title = NodePath("Title")
+roundsLabel = NodePath("Rounds")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -116,3 +117,36 @@ offset_left = 610.0
 offset_top = 485.0
 offset_right = 610.0
 offset_bottom = 485.0
+
+[node name="Rounds" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 222.0
+offset_right = 240.0
+offset_bottom = 252.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 21
+text = "Equations Remaining:"
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 756.0
+offset_right = 645.0
+offset_bottom = 822.0
+theme_override_constants/h_separation = 260
+columns = 2
+
+[node name="Restart" type="Button" parent="GridContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Restart"
+
+[node name="Menu" type="Button" parent="GridContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Main Menu"
+
+[connection signal="pressed" from="GridContainer2/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GridContainer2/Menu" to="." method="_on_menu_pressed"]

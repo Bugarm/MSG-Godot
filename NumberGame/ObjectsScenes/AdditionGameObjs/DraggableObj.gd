@@ -11,6 +11,7 @@ var curAns: int
 var checkAnswer: bool
 
 @export var answerText: Label
+@export var anim: AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +26,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(Global.inDragObj)
+	
+	if Global.showAnswer && checkAnsSlot():
+		anim.play("shake")
+		Global.showAnswer = false
 	
 	if Global.hasAnsCorrected:
 		RestartObj()
@@ -84,12 +89,14 @@ func TweenAnswerSlot():
 		if(checkAnsSlot()):
 			tween.tween_property(self,"position",body_ref.position,0.2).set_ease(Tween.EASE_OUT)
 			self.modulate = "#008000"
-			print("WIn")
+			anim.play("win")
+
+			await get_tree().create_timer(1).timeout
 			Global.hasAnsCorrected = true
 			
 		else:
 			tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-			self.modulate = "#FF0000"
+			Global.showAnswer = true
 
 func RestartObj():
 	
