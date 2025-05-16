@@ -8,13 +8,13 @@ var width = 6
 @export var label: Label
 @export var roundLabel: Label
 @export var grid_container: GridContainer
-@export var audioStream: AudioStreamPlayer2D
 
-@export var MusicTracks: Array[AudioStream]
 
 var numRef: Array = []
 
 var num_grid: Array = []
+
+signal playAudioClip(answer)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +22,8 @@ func _ready():
 	num_grid = GenerateSearchNum()
 	#print(num_grid)
 	SpawnNumSlots()
-	playAudioClip()
+
+	playAudioClip.emit(Global.searchingAns)
 	pass # Replace with function body.
 
 
@@ -78,7 +79,7 @@ func GenerateSearchNum() -> Array:
 			numList.append(row_list)
 		numList.shuffle()
 	
-	playAudioClip()
+	playAudioClip.emit(Global.searchingAns)
 	
 	print(ans)
 	return numList
@@ -93,12 +94,7 @@ func SpawnNumSlots():
 			grid_container.add_child(numObj)
 	pass
 
-func playAudioClip():
-	var audioNum = Global.searchingAns
-	
-	audioStream.stream = MusicTracks[audioNum]
-	audioStream.play()
 
 func _on_button_pressed():
-	playAudioClip()
+	playAudioClip.emit(Global.searchingAns)
 	pass # Replace with function body.

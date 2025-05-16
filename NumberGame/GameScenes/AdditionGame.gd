@@ -1,5 +1,6 @@
 extends Control
 
+var drag_scene = preload("res://ObjectsScenes/AdditionGameObjs/DraggableObj.tscn")
 var rounds = 4
 
 @export var slot1Obj: Label
@@ -7,6 +8,7 @@ var rounds = 4
 @export var title: Label
 
 @export var roundsLabel: Label
+
 
 var zeroCheck = 0
 var disableRounds = false
@@ -17,6 +19,8 @@ func _ready():
 	slot1Obj.text = str(Global.slot1)
 	slot2Obj.text = str(Global.slot2)
 	roundsLabel.text = "Equations Remaining: " + str(rounds)
+	
+
 	pass # Replace with function body.
 
 
@@ -82,3 +86,4 @@ func _on_restart_pressed():
 func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://GameScenes/MainMenu.tscn")
 	pass # Replace with function body.
+

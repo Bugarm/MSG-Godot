@@ -1,19 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bug81dadeio8h"]
+[gd_scene load_steps=14 format=3 uid="uid://bug81dadeio8h"]
 
 [ext_resource type="Script" path="res://ObjectsScenes/SearchGame/NumberGenerator.gd" id="1_3dn2r"]
-[ext_resource type="AudioStream" uid="uid://j2sq4pn8n63x" path="res://GameScenes/AudioClips/clip0.wav" id="2_bymtx"]
-[ext_resource type="AudioStream" uid="uid://canhi53rxlok3" path="res://GameScenes/AudioClips/clip1.wav" id="2_x23od"]
-[ext_resource type="AudioStream" uid="uid://dkig6jpqva0on" path="res://GameScenes/AudioClips/clip2.wav" id="3_cvdb5"]
-[ext_resource type="AudioStream" uid="uid://dplpimcunpoc1" path="res://GameScenes/AudioClips/clip3.wav" id="4_xbu7k"]
-[ext_resource type="AudioStream" uid="uid://b45kqp6sjssmv" path="res://GameScenes/AudioClips/clip4.wav" id="5_oarsa"]
-[ext_resource type="AudioStream" uid="uid://c6mrm38dx2rp7" path="res://GameScenes/AudioClips/clip5.wav" id="6_3v65v"]
-[ext_resource type="AudioStream" uid="uid://jkerxpp617r" path="res://GameScenes/AudioClips/clip6.wav" id="7_d0qot"]
-[ext_resource type="AudioStream" uid="uid://dk4605utm65k3" path="res://GameScenes/AudioClips/clip7.wav" id="8_3from"]
-[ext_resource type="AudioStream" uid="uid://3pg1wfhcire2" path="res://GameScenes/AudioClips/clip8.wav" id="9_s7kq7"]
-[ext_resource type="AudioStream" uid="uid://cpshokw785wit" path="res://GameScenes/AudioClips/clip9.wav" id="10_7vj1k"]
-[ext_resource type="AudioStream" uid="uid://cq10xpx00bewi" path="res://GameScenes/AudioClips/clip10.wav" id="11_8s7hv"]
+[ext_resource type="Script" path="res://ObjectsScenes/SearchGame/AudioManager.gd" id="1_206b4"]
+[ext_resource type="AudioStream" uid="uid://j2sq4pn8n63x" path="res://AudioClips/clip0.wav" id="2_42wno"]
+[ext_resource type="AudioStream" uid="uid://canhi53rxlok3" path="res://AudioClips/clip1.wav" id="3_hopwc"]
+[ext_resource type="AudioStream" uid="uid://dkig6jpqva0on" path="res://AudioClips/clip2.wav" id="4_kbttq"]
+[ext_resource type="AudioStream" uid="uid://dplpimcunpoc1" path="res://AudioClips/clip3.wav" id="5_gr7aq"]
+[ext_resource type="AudioStream" uid="uid://b45kqp6sjssmv" path="res://AudioClips/clip4.wav" id="6_rbo6v"]
+[ext_resource type="AudioStream" uid="uid://c6mrm38dx2rp7" path="res://AudioClips/clip5.wav" id="7_sk2mn"]
+[ext_resource type="AudioStream" uid="uid://jkerxpp617r" path="res://AudioClips/clip6.wav" id="8_jv44m"]
+[ext_resource type="AudioStream" uid="uid://dk4605utm65k3" path="res://AudioClips/clip7.wav" id="9_47gxc"]
+[ext_resource type="AudioStream" uid="uid://3pg1wfhcire2" path="res://AudioClips/clip8.wav" id="10_471nt"]
+[ext_resource type="AudioStream" uid="uid://cpshokw785wit" path="res://AudioClips/clip9.wav" id="11_vv7da"]
+[ext_resource type="AudioStream" uid="uid://cq10xpx00bewi" path="res://AudioClips/clip10.wav" id="12_2hg8j"]
 
-[node name="NumSearchGame" type="Control" node_paths=PackedStringArray("label", "roundLabel", "grid_container", "audioStream")]
+[node name="NumSearchGame" type="Control" node_paths=PackedStringArray("label", "roundLabel", "grid_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,8 +25,6 @@ script = ExtResource("1_3dn2r")
 label = NodePath("Label")
 roundLabel = NodePath("roundLabel")
 grid_container = NodePath("CenterContainer/GridContainer")
-audioStream = NodePath("AudioStreamPlayer2D")
-MusicTracks = Array[AudioStream]([ExtResource("2_bymtx"), ExtResource("2_x23od"), ExtResource("3_cvdb5"), ExtResource("4_xbu7k"), ExtResource("5_oarsa"), ExtResource("6_3v65v"), ExtResource("7_d0qot"), ExtResource("8_3from"), ExtResource("9_s7kq7"), ExtResource("10_7vj1k"), ExtResource("11_8s7hv")])
 
 [node name="Back" type="ColorRect" parent="."]
 layout_mode = 0
@@ -41,6 +40,7 @@ offset_bottom = 238.0
 color = Color(0, 0, 0, 1)
 
 [node name="roundLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 159.0
 offset_right = 169.0
@@ -93,6 +93,9 @@ offset_bottom = 828.0
 theme_override_font_sizes/font_size = 46
 text = "Replay Audio"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("audioStream")]
+script = ExtResource("1_206b4")
+audioStream = NodePath(".")
+MusicTracks = Array[AudioStream]([ExtResource("2_42wno"), ExtResource("3_hopwc"), ExtResource("4_kbttq"), ExtResource("5_gr7aq"), ExtResource("6_rbo6v"), ExtResource("7_sk2mn"), ExtResource("8_jv44m"), ExtResource("9_47gxc"), ExtResource("10_471nt"), ExtResource("11_vv7da"), ExtResource("12_2hg8j")])
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
