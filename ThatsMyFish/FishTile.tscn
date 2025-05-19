@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://rg823gq0dqav"]
+
+[ext_resource type="Texture2D" uid="uid://du06jn6eakbs6" path="res://Assets/Fish1.png" id="1_vewog"]
+[ext_resource type="Script" path="res://FishTile.gd" id="2_03x5r"]
+[ext_resource type="Texture2D" uid="uid://b0gcia6upy5w2" path="res://Assets/Fish2.png" id="3_ayvve"]
+[ext_resource type="Texture2D" uid="uid://buxmgi07jk17s" path="res://Assets/Fish3.png" id="4_wmwh2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kismn"]
+radius = 32.5615
+
+[node name="StaticBody2D" type="StaticBody2D" node_paths=PackedStringArray("textureFish") groups=["droppable"]]
+script = ExtResource("2_03x5r")
+fishTexture = Array[Texture]([ExtResource("1_vewog"), ExtResource("3_ayvve"), ExtResource("4_wmwh2")])
+textureFish = NodePath("FishTile")
+
+[node name="FishTile" type="TextureButton" parent="." groups=["droppable"]]
+offset_right = 116.0
+offset_bottom = 128.0
+scale = Vector2(0.6, 0.6)
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("1_vewog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(34.5, 38)
+shape = SubResource("CircleShape2D_kismn")
+
+[connection signal="mouse_entered" from="FishTile" to="FishTile" method="_on_mouse_entered"]
+[connection signal="pressed" from="FishTile" to="." method="_on_fish_tile_pressed"]
+[connection signal="pressed" from="FishTile" to="FishTile" method="_on_pressed"]
+[connection signal="toggled" from="FishTile" to="FishTile" method="_on_toggled"]

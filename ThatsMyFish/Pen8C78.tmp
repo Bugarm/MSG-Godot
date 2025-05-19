@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxkcq6leb822d"]
+
+[ext_resource type="Texture2D" uid="uid://cxcb5rfr6bj76" path="res://Assets/penguin.png" id="1_r2owr"]
+[ext_resource type="Script" path="res://Penguin.gd" id="2_xwxbp"]
+
+[node name="Penguin" type="TextureButton"]
+offset_right = 60.0
+offset_bottom = 68.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_r2owr")
+script = ExtResource("2_xwxbp")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

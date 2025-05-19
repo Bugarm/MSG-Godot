@@ -2,6 +2,7 @@ extends Control
 
 var rounds = 1
 var numSlot = preload("res://ObjectsScenes/SearchGame/NumberGenerator.tscn")
+@export var audioManagerObj: AudioStreamPlayer2D;
 var height = 6
 var width = 6
 
@@ -9,21 +10,24 @@ var width = 6
 @export var roundLabel: Label
 @export var grid_container: GridContainer
 
+@export var MusicTracks: Array[AudioStream]
 
 var numRef: Array = []
 
 var num_grid: Array = []
 
-signal playAudioClip(answer)
+signal generatedNum()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	roundLabel.text = "Round:" + str(rounds)
 	num_grid = GenerateSearchNum()
 	#print(num_grid)
 	SpawnNumSlots()
 
-	playAudioClip.emit(Global.searchingAns)
+	audioManagerObj.playAudioClip.connect(_on_playAudioClip)
+
 	pass # Replace with function body.
 
 
@@ -55,6 +59,12 @@ func _process(delta):
 		
 	pass
 
+func _on_playAudioClip(answer: int):
+	var audioNum = answer
+	
+	audioManagerObj.stream = MusicTracks[audioNum]
+	audioManagerObj.play()
+
 func GenerateSearchNum() -> Array:
 	var numList: Array = []
 	var ans = randi_range(0,10)
@@ -79,7 +89,7 @@ func GenerateSearchNum() -> Array:
 			numList.append(row_list)
 		numList.shuffle()
 	
-	playAudioClip.emit(Global.searchingAns)
+	generatedNum.emit()
 	
 	print(ans)
 	return numList
@@ -94,7 +104,3 @@ func SpawnNumSlots():
 			grid_container.add_child(numObj)
 	pass
 
-
-func _on_button_pressed():
-	playAudioClip.emit(Global.searchingAns)
-	pass # Replace with function body.

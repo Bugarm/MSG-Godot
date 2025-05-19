@@ -1,11 +1,13 @@
 extends AudioStreamPlayer2D
-var numSlot = preload("res://ObjectsScenes/SearchGame/NumberGenerator.tscn")
-@export var audioStream: AudioStreamPlayer2D
-@export var MusicTracks: Array[AudioStream]
+
+signal playAudioClip(answer)
+@export var node: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	numSlot.playAudioClip.connect(_playAudioClip)
+	await get_tree().process_frame
+	playAudioClip.emit(Global.searchingAns)
+	node.generatedNum.connect(playAudio)	
 	pass # Replace with function body.
 
 
@@ -13,9 +15,11 @@ func _ready():
 func _process(delta):
 	pass
 
+func _on_button_pressed():
+	playAudioClip.emit(Global.searchingAns)
+	pass # Replace with function body.
 
-func _playAudioClip(answer):
-	var audioNum = answer
-	
-	audioStream.stream = MusicTracks[audioNum]
-	audioStream.play()
+func playAudio():
+	playAudioClip.emit(Global.searchingAns)
+	pass # Replace with function body.
+
